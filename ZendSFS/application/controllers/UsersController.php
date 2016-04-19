@@ -7,16 +7,14 @@ class UsersController extends Zend_Controller_Action
          $this->model = new Application_Model_DbTable_Users();
     }
 
-    
 
     public function indexAction()
     {
 
-        $registration= new Application_Form_Registration();
+     $registration= new Application_Form_Registration() ;
 
-        $this->view->registration=$registration;
+     $this->view->registration=$registration;
 
-       // $this->redirect('users/list');
         
     }
     ###############33AddUser##############333
