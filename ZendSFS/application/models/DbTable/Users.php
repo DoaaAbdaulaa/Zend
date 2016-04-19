@@ -10,7 +10,7 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
 		$row = $this->createRow();
 		$row->username = $data['username'];
 		$row->useremail = $data['useremail'];
-		$row->password= $data['password'];
+		$row->password= md5($data['password']);
 		$row->picture= $data['picture'];
 		$row->signatuer= $data['signature'];
 		$row->gender= $data['gender'];
@@ -44,8 +44,6 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
 		 unset( $data['submit']);
 	$where = "user_id = " . $id;
 
-		
-	
    return  $this->update($data, $where );
 
 
@@ -55,9 +53,7 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
 	function adminUser($id){
    $data = array(
     'admin' => 1);
-   $where = "user_id = " . $id;
-
-		
+   $where = "user_id = " . $id;		
 	
   return  $this->update($data, $where );
 
@@ -67,9 +63,6 @@ function removeadminUser($id){
    $data = array(
     'admin' => 0);
    $where = "user_id = " . $id;
-
-		
-	
   return  $this->update($data, $where );
 
 }
@@ -79,8 +72,6 @@ function banUser($id){
     'ban' => 1);
    $where = "user_id = " . $id;
 
-		
-	
   return  $this->update($data, $where );
 
 }
@@ -101,10 +92,25 @@ function removeban($id){
 		return $this->find($email)->toArray();
 
 	}
+// ------------- registration user -------------------------
+	function registration($data){
+		
+		$row = $this->createRow();
+		$row->username = $data['username'];
+		$row->useremail = $data['useremail'];
+		$row->password= md5($data['password']);
+		//$row->picture= $data['picture'];
+		$row->picture="image.png";
+		//$row->signatuer= $data['signature'];
+		$row->gender= $data['gender'];
+		$row->country= $data['country'];
+		$row->ban=0;
+		$row->admin=0;
+		$row->systemclosed=0;
+		return $row->save();
 
 
+	}
 
 }
 	
-
-

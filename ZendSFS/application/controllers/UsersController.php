@@ -17,7 +17,19 @@ class UsersController extends Zend_Controller_Action
 
      $this->view->registration=$registration;
 
+     $data = $this->getRequest()->getParams();
+
+     if($this->getRequest()->isPost()){
+
+        if($registration->isValid($data)){
+
+        if ($this->model->registration($data)){
+
+        $this->redirect('users/list');}
         
+         }   
+    }
+     
     }
 
     public function addAction()

@@ -36,9 +36,8 @@ class Application_Form_Registration extends Zend_Form
         $gender= new Zend_Form_Element_Radio('gender');
         $gender->setRequired();
         $gender->setLabel("Gender :");
-        $gender->addMultiOptions( array('0' => 'Female','1' => 'Male'));
+        $gender->addMultiOptions( array('Female' => 'Female','Male' => 'Male'));
 //---------------------------------- Country --------------------------------------------------
-
         $country = new Zend_Form_Element_Select('country');
         $country->setLabel('Country :');
         $country->setMultiOptions(array('egypt'=>'Egypt', 'USA'=>'USA'));
