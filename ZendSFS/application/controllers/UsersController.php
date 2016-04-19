@@ -11,6 +11,11 @@ class UsersController extends Zend_Controller_Action
 
     public function indexAction()
     {
+
+        $registration= new Application_Form_Registration();
+
+        $this->view->registration=$registration;
+
        // $this->redirect('users/list');
         
     }
