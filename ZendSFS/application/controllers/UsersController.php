@@ -1,12 +1,14 @@
 <?php
 
 class UsersController extends Zend_Controller_Action
-{  private $model;
+{
+
+    private $model = null;
+
     public function init()
     {
          $this->model = new Application_Model_DbTable_Users();
     }
-
 
     public function indexAction()
     {
@@ -17,7 +19,7 @@ class UsersController extends Zend_Controller_Action
 
         
     }
-    ###############33AddUser##############333
+
     public function addAction()
     {
 	$data = $this->getRequest()->getParams();
@@ -33,13 +35,13 @@ class UsersController extends Zend_Controller_Action
 	$this->view->form = $form;
 	$this->render('adduser');
 
-}
- #################################List Users#########################
-public function listAction()
+    }
+
+    public function listAction()
     {
        $this->view->Users = $this->model->listUsers();
     }
-###############################333Delete Users###########################
+
     public function deleteAction()
     {
      $id = $this->getRequest()->getParam('user_id');
@@ -52,9 +54,9 @@ public function listAction()
   $this->redirect('Users/index');
 }  
 
-}
-#######################################Edit User################################
-public function editAction()
+    }
+
+    public function editAction()
     {
     $data = $this->getRequest()->getParams();
     $id = $this->getRequest()->getParam('user_id');
@@ -78,7 +80,7 @@ public function editAction()
     }
 
     }
-    #################################Set Admin###################
+
     public function adminAction()
     {
     $data = $this->getRequest()->getParams();
@@ -87,16 +89,16 @@ public function editAction()
     $this->redirect('Users/list');
     
     }
-    ########################33List Admin####################
-     public function listadminAction()
+
+    public function listadminAction()
     {
        $this->view->Users = $this->model->listUsers();
     
  
     
     }
-    ######################################REmove Admin
-     public function removeadminAction()
+
+    public function removeadminAction()
     {
     
      $data = $this->getRequest()->getParams();
@@ -106,7 +108,6 @@ public function editAction()
  
     
     }
-    #################################################Ban Action#########################
 
     public function banAction()
     {
@@ -116,14 +117,14 @@ public function editAction()
     $this->redirect('Users/list');
     
     }
-    ####################################################Display Ban List###############
-     public function banlistAction()
+
+    public function banlistAction()
     {
     $this->view->Users = $this->model->listUsers();
     
     }
-    ######################################Remove Ban##############
-     public function removebanAction()
+
+    public function removebanAction()
     {
     
         $data = $this->getRequest()->getParams();
@@ -134,6 +135,17 @@ public function editAction()
     
     }
 
+    public function loginAction()
+    {
+        // action body
+
+       $login=new  Application_Form_Login ();
+
+       $this->view->login=$login;
+    }
+
 
 }
+
+
 

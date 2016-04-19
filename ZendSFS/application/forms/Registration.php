@@ -52,11 +52,7 @@ class Application_Form_Registration extends Zend_Form
         $pic->setRequired(true);               
         $pic->addValidator('Extension', false, 'jpeg,png');
         $pic->getValidator('Extension')->setMessage('This file type is not supportted.');
-
-//---------------------------------------------------------------------------------------------
-
-
-
+        
 //--------------------------------------------------------------------------------------------        
         // for  input  button submit  
         $submit=new Zend_Form_Element_Submit('submit');  
