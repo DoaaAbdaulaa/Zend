@@ -44,6 +44,7 @@
           <dbTableFile dbTableName="Category"/>
           <dbTableFile dbTableName="SubCategory"/>
           <dbTableFile dbTableName="Thread"/>
+          <dbTableFile dbTableName="Users"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>

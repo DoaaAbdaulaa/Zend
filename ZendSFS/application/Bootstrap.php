@@ -16,7 +16,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		//Meta
 		$view->headMeta()->appendName('keywords', 'framework, PHP')->appendHttpEquiv('Content-Type','text/html;charset=utf-8');
 		// Set the initial title and separator:
-		$view->headTitle('Zend Lab1')->setSeparator(' :: ');
+		$view->headTitle('SFS')->setSeparator(' :: ');
 		// Set the initial stylesheet:
 		//$view->headLink()->prependStylesheet('/css/site.css');
 		// Set the initial JS to load:
