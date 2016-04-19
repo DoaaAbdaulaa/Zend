@@ -23,8 +23,6 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
        
         return $this->delete('user_id='.$id);
     
-
-
     } 
     #######################3List User#################
     function listUsers(){
@@ -97,6 +95,15 @@ function removeban($id){
   return  $this->update($data, $where );
 
 }
+
+////---------------------- get  email ---------------------
+	function getUserByEmail($email){
+		return $this->find($email)->toArray();
+
+	}
+
+
+
 }
 	
 

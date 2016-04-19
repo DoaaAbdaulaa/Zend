@@ -142,6 +142,53 @@ class UsersController extends Zend_Controller_Action
        $login=new  Application_Form_Login ();
 
        $this->view->login=$login;
+
+        $useremail= $this->_request->getParam('useremail');
+
+        $password= $this->_request->getParam('password');
+
+        $data=$this->getRequest()->getParams();
+
+        if($this->getRequest()->isPost()){
+
+            if($login->isValid($data)){
+                 // get the default db adapter
+                $db =Zend_Db_Table::getDefaultAdapter();
+
+                // create  auther  table 
+                $authAdapter = new Zend_Auth_Adapter_DbTable($db,'users','useremail','password');
+                // to compare  between use information 
+                $authAdapter->setIdentity($useremail);
+                
+                $authAdapter->setCredential(md5($password));
+
+                // reslte  to check information is  valied  or  not  by  ( isValid() )
+                $result = $authAdapter->authenticate();
+
+                var_dump($result);
+                if($result->isValid()){
+                    echo "valid user";
+                    //save information to user 
+                    $dataUser=$this->model->getUserByEmail($useremail);
+                    //echo $dataUser[0]['id']; 
+                    $auth =Zend_Auth::getInstance();
+                    $storage = $auth->getStorage();
+                    $storage->write($authAdapter->getResultRowObject(array('useremail' , 'user_id' , 'username')));
+                    //var_dump( $auth->getIdentity()->id );
+                    //var_dump($auth->getIdentity()->id);
+                    $idd=$auth->getIdentity()->user_id;
+                    echo $idd;
+                    $this->redirect('users/list/uid/'.$idd); 
+                }
+                else{
+                    echo "not valid";
+                    $this->redirect('users/login'); 
+                }
+
+            }
+
+        }
+
     }
 
 

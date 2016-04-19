@@ -16,12 +16,12 @@ class Application_Form_Registration extends Zend_Form
         $username->setAttrib("class","form-control");
 //--------------------------------------------------------------------------------------
         /// for  input  email 
-        $email=new Zend_Form_Element_Text("email");
-        $email->setRequired();
-        $email->setLabel("Email  :");
-        $email->addValidator(new Zend_Validate_EmailAddress());
-        $email->setAttrib("placeholder","Enter your email");
-        $email->setAttrib("class","form-control");
+        $useremail=new Zend_Form_Element_Text("useremail");
+        $useremail->setRequired();
+        $useremail->setLabel("Email  :");
+        $useremail->addValidator(new Zend_Validate_EmailAddress());
+        $useremail->setAttrib("placeholder","Enter your email");
+        $useremail->setAttrib("class","form-control");
 //--------------------------------------------------------------------------------
         // for  input password  
         $password=new Zend_Form_Element_Password('password');
@@ -52,7 +52,7 @@ class Application_Form_Registration extends Zend_Form
         $pic->setRequired(true);               
         $pic->addValidator('Extension', false, 'jpeg,png');
         $pic->getValidator('Extension')->setMessage('This file type is not supportted.');
-        
+
 //--------------------------------------------------------------------------------------------        
         // for  input  button submit  
         $submit=new Zend_Form_Element_Submit('submit');  
@@ -60,7 +60,7 @@ class Application_Form_Registration extends Zend_Form
 //---------------------------------------------------------------------------------------------
         // add componnent  
         $this->setAttrib("class","form-horizontal");
-        $this->addElements(array($username,$email,$password,$country,$gender,$pic,$submit));
+        $this->addElements(array($username,$useremail,$password,$country,$gender,$pic,$submit));
 
          
 
