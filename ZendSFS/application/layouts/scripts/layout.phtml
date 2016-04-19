@@ -1,0 +1,30 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap.min.css">
+	
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle() ?>
+<?php echo $this->headLink() ?>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+<?php echo $this->layout()->content; ?>
+
+	</div>
+	</div>
+
+	<script src=" <?php echo $this->baseUrl(); ?>/js/jquery-1.11.2.js"></script>
+	<script src=" <?php echo $this->baseUrl(); ?>/js/bootstrap.min.js"></script>
+	<script src=" <?php echo $this->baseUrl(); ?>/js/script.js"></script>
+
+	<?php echo $this->headScript() ?>
+
+
+</body>
+</html>
+
