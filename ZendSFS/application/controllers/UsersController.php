@@ -113,6 +113,23 @@ public function editAction()
     $this->redirect('Users/list');
     
     }
+    ####################################################Display Ban List###############
+     public function banlistAction()
+    {
+    $this->view->Users = $this->model->listUsers();
+    
+    }
+    ######################################Remove Ban##############
+     public function removebanAction()
+    {
+    
+        $data = $this->getRequest()->getParams();
+        $id = $this->getRequest()->getParam('user_id');
+        $this->model->removeban($id);
+        $this->redirect('Users/list');
+     
+    
+    }
 
 
 }

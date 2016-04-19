@@ -86,6 +86,17 @@ function banUser($id){
   return  $this->update($data, $where );
 
 }
+#############################Remove Ban Action#########################################
+function removeban($id){
+   $data = array(
+    'ban' => 0);
+   $where = "user_id = " . $id;
+
+		
+	
+  return  $this->update($data, $where );
+
+}
 }
 	
 
