@@ -19,18 +19,30 @@ class UsersController extends Zend_Controller_Action
 
      $data = $this->getRequest()->getParams();
 
+     $email=$this->getRequest()->getParam("useremail");
+
+
      if($this->getRequest()->isPost()){
 
         if($registration->isValid($data)){
+            // to check email enter  only one  
+      /*      if($this->model->getUserByEmail($email)){
+                echo "there are  more than on ";
+            }
+            else
+            {
+              */  echo "Done register ";
 
-        if ($this->model->registration($data)){
+                 if ($this->model->registration($data)){
 
-        $this->redirect('users/list');}
+                 //$this->redirect('users/list');}
         
-         }   
+                 }  
+            //}
     }
      
     }
+}
 
     public function addAction()
     {
@@ -185,12 +197,28 @@ class UsersController extends Zend_Controller_Action
                     //echo $dataUser[0]['id']; 
                     $auth =Zend_Auth::getInstance();
                     $storage = $auth->getStorage();
-                    $storage->write($authAdapter->getResultRowObject(array('useremail' , 'user_id' , 'username')));
+                    $storage->write($authAdapter->getResultRowObject(array('useremail' , 'user_id' , 'username','admin')));
                     //var_dump( $auth->getIdentity()->id );
                     //var_dump($auth->getIdentity()->id);
                     $idd=$auth->getIdentity()->user_id;
+
+                    $adminn=$auth->getIdentity()->admin;
                     echo $idd;
-                    $this->redirect('users/list/uid/'.$idd); 
+                    echo $adminn;
+                    ///// check admin or  not 
+                    if($adminn==0){
+
+                        echo "not Admin ";
+
+                        $this->redirect('users/list/uid/'.$idd);
+                    }
+                    else{
+
+                         echo " Admin ";
+
+                         $this->redirect('users/list/uid/'.$idd);
+                    }
+                   // $this->redirect('users/list/uid/'.$idd); 
                 }
                 else{
                     echo "not valid";

@@ -20,6 +20,12 @@ class Application_Form_Registration extends Zend_Form
         $useremail->setRequired();
         $useremail->setLabel("Email  :");
         $useremail->addValidator(new Zend_Validate_EmailAddress());
+        $useremail->addValidator(new Zend_Validate_Db_NoRecordExists(
+            array(
+              'table' => 'users',
+              'field' => 'useremail'
+            )
+        ));
         $useremail->setAttrib("placeholder","Enter your email");
         $useremail->setAttrib("class","form-control");
 //--------------------------------------------------------------------------------
@@ -60,9 +66,6 @@ class Application_Form_Registration extends Zend_Form
         // add componnent  
         $this->setAttrib("class","form-horizontal");
         $this->addElements(array($username,$useremail,$password,$country,$gender,$pic,$submit));
-
-         
-
     }
     
 }

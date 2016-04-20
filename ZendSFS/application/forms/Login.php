@@ -6,6 +6,7 @@ class Application_Form_Login extends Zend_Form
     public function init()
     {
         /* Form Elements & Other Definitions Here ... */
+        $admin=new Zend_Form_Element_Hidden("admin");
 
         $useremail=new Zend_Form_Element_Text("useremail");
         $useremail->setRequired();
@@ -27,7 +28,7 @@ class Application_Form_Login extends Zend_Form
 //---------------------------------------------------------------------------------------------
         // add componnent  
         $this->setAttrib("class","form-horizontal");
-        $this->addElements(array($useremail,$password,$submit));
+        $this->addElements(array($admin,$useremail,$password,$submit));
 
 
 
