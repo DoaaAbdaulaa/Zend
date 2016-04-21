@@ -17,32 +17,48 @@ class UsersController extends Zend_Controller_Action
 
      $this->view->registration=$registration;
 
-     $data = $this->getRequest()->getParams();
-
-     $email=$this->getRequest()->getParam("useremail");
-
-
+    // $data = $this->getRequest()->getParams();
      if($this->getRequest()->isPost()){
 
+     $data = $this->getRequest()->getParams();
+     var_dump($data);
+
         if($registration->isValid($data)){
-            // to check email enter  only one  
-      /*      if($this->model->getUserByEmail($email)){
-                echo "there are  more than on ";
+
+            $pic1=pathinfo($registration->picture->getFileName());
+
+             $A=$pic1['basename'];
+
+             echo $A;
+           
+           // $registration->picture->addFilter('Rename',PUBLIC_PATH.'/images/'.uniqid().time().'.'.$pic1['extension']);
+            
+             if ($registration->picture->receive()) {
+                    $data['picture']=$pic1['basename'];
+           if ($this->model->registration($data)){
+            
+                $this->redirect('users/login');
+
+           }
+                    
+
+              //  $this->view->picture=pathinfo($registration->picture->getFileName());
+
             }
-            else
-            {
-              */  echo "Done register ";
+              echo "Done register ";
 
-                 if ($this->model->registration($data)){
+           // if ($this->model->registration($data)){
 
-                 //$this->redirect('users/list');}
-        
-                 }  
-            //}
+                   // $this->redirect('users/login');
+             // }
+    
+    } 
+   
     }
      
     }
-}
+
+
 
     public function addAction()
     {

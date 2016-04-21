@@ -50,13 +50,16 @@ class Application_Form_Registration extends Zend_Form
         $country->setRequired(true)->addValidator('NotEmpty', true);
         $country->setAttrib("class","form-control"); 
 //-----------------------------up load image --------------------------------------------------------------- 
-
-        $pic = new Zend_Form_Element_File('uploadImage');
-        $pic->setLabel("Upload Image ");
-        $pic->setAttrib("class"," btn btn-info");
-        $pic->setRequired(true);               
-        $pic->addValidator('Extension', false, 'jpeg,png');
-        $pic->getValidator('Extension')->setMessage('This file type is not supportted.');
+        $picture = new Zend_Form_Element_File('picture');
+        $picture->setLabel("Upload Image ");
+        $picture->setAttrib("class"," btn btn-info");
+        $picture->setRequired(true);  
+        $picture->setDestination('../public/images');
+        $picture->addValidator('Count', false, 1); 
+        //$picture->addValidator('Size', false, 2097152); 
+      //  $picture->setMaxFileSize(2097152);            
+        $picture->addValidator('Extension', false, 'jpg,jpeg,png,gif');
+        $picture->getValidator('Extension')->setMessage('This file type is not supportted.');
 
 //--------------------------------------------------------------------------------------------        
         // for  input  button submit  
@@ -65,7 +68,9 @@ class Application_Form_Registration extends Zend_Form
 //---------------------------------------------------------------------------------------------
         // add componnent  
         $this->setAttrib("class","form-horizontal");
-        $this->addElements(array($username,$useremail,$password,$country,$gender,$pic,$submit));
+        $this->setAttrib('enctype', 'multipart/form-data');
+        $this->setMethod("post");
+        $this->addElements(array($username,$useremail,$password,$country,$gender,$picture,$submit));
     }
     
 }

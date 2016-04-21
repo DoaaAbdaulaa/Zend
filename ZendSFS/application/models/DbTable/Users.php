@@ -99,17 +99,13 @@ function removeban($id){
 		$row->username = $data['username'];
 		$row->useremail = $data['useremail'];
 		$row->password= md5($data['password']);
-		//$row->picture= $data['picture'];
-		$row->picture="image.png";
-		//$row->signatuer= $data['signature'];
+		$row->picture= $data['picture'];
 		$row->gender= $data['gender'];
 		$row->country= $data['country'];
 		$row->ban=0;
 		$row->admin=0;
 		$row->systemclosed=0;
 		return $row->save();
-
-
 	}
 
 }
