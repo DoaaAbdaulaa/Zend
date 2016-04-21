@@ -105,6 +105,12 @@ function removeban($id){
 		$row->ban=0;
 		$row->admin=0;
 		$row->systemclosed=0;
+		//$row->save();
+		//$mailer=new Mailer();
+		//$mailer->sendRegistrationMail($useremail,$username);
+		//return $user_id 
+
+
 		return $row->save();
 	}
 

@@ -58,8 +58,6 @@ class UsersController extends Zend_Controller_Action
      
     }
 
-
-
     public function addAction()
     {
 	$data = $this->getRequest()->getParams();
@@ -213,9 +211,8 @@ class UsersController extends Zend_Controller_Action
                     //echo $dataUser[0]['id']; 
                     $auth =Zend_Auth::getInstance();
                     $storage = $auth->getStorage();
-                    $storage->write($authAdapter->getResultRowObject(array('useremail' , 'user_id' , 'username','admin')));
-                    //var_dump( $auth->getIdentity()->id );
-                    //var_dump($auth->getIdentity()->id);
+                    $storage->write($authAdapter->getResultRowObject(array('useremail' , 'user_id' , 'username','admin',)));
+
                     $idd=$auth->getIdentity()->user_id;
 
                     $adminn=$auth->getIdentity()->admin;
@@ -247,8 +244,49 @@ class UsersController extends Zend_Controller_Action
 
     }
 
+    public function sendMailAction()
+    {
+        
+    $mail = new Zend_Mail();
+// information of user login to send message in your  mail 
+    $auth =Zend_Auth::getInstance();
+
+    $idd=$auth->getIdentity()->user_id;
+
+    $name=$auth->getIdentity()->username;
+
+    $Emailuse=$auth->getIdentity()->useremail;
+
+
+    // body of email 
+    $mail->setBodyText('hi'.$name."<br>".'Welcome in Forums  your Email '.$Emailuse.'to change  your password http://localhost/Zend/Zend/ZendSFS/public/users/ ');
+
+    $mail->setFrom('forum@sfs.com', 'Forum');
+
+    $mail->addTo($Emailuse,'Me');
+
+    $mail->setSubject('TestSubject rererere—–');
+
+    $mail->send();
+
+    }
+
+    public function logoutAction()
+    {
+        // action body
+        $authAdapter=Zend_Auth::getInstance();
+
+        $authAdapter->clearIdentity();
+
+        $this->redirect("/user/login");  
+    }
+
 
 }
+
+
+
+
 
 
 
