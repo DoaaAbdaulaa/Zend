@@ -62,6 +62,15 @@ class Application_Form_Registration extends Zend_Form
         $picture->getValidator('Extension')->setMessage('This file type is not supportted.');
 
 //--------------------------------------------------------------------------------------------        
+     $captchaElement = new Zend_Form_Element_Captcha('signup',
+                    array('captcha' => array(
+                    'captcha' => 'Figlet',
+                    'wordLen' => 6,
+                    'timeout' => 600))
+                    );
+    $captchaElement->setLabel('Please type in thewords below to continue');  
+   
+//--------------------------------------------------------------------------------
         // for  input  button submit  
         $submit=new Zend_Form_Element_Submit('submit');  
         $submit->setAttrib("class","form-control  btn btn-info");
@@ -70,7 +79,7 @@ class Application_Form_Registration extends Zend_Form
         $this->setAttrib("class","form-horizontal");
         $this->setAttrib('enctype', 'multipart/form-data');
         $this->setMethod("post");
-        $this->addElements(array($username,$useremail,$password,$country,$gender,$picture,$submit));
+        $this->addElements(array($username,$useremail,$password,$country,$gender,$picture,$captchaElement,$submit));
     }
     
 }

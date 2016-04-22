@@ -20,8 +20,11 @@ class UsersController extends Zend_Controller_Action
     // $data = $this->getRequest()->getParams();
      if($this->getRequest()->isPost()){
 
+      
+
      $data = $this->getRequest()->getParams();
-     var_dump($data);
+
+     //var_dump($data);
 
         if($registration->isValid($data)){
 
@@ -29,28 +32,21 @@ class UsersController extends Zend_Controller_Action
 
              $A=$pic1['basename'];
 
-             echo $A;
-           
-           // $registration->picture->addFilter('Rename',PUBLIC_PATH.'/images/'.uniqid().time().'.'.$pic1['extension']);
-            
+            // echo $A;
+  
              if ($registration->picture->receive()) {
+
                     $data['picture']=$pic1['basename'];
+
            if ($this->model->registration($data)){
             
                 $this->redirect('users/login');
 
            }
                     
-
-              //  $this->view->picture=pathinfo($registration->picture->getFileName());
-
             }
               echo "Done register ";
 
-           // if ($this->model->registration($data)){
-
-                   // $this->redirect('users/login');
-             // }
     
     } 
    
@@ -245,9 +241,7 @@ class UsersController extends Zend_Controller_Action
     }
 
     public function sendMailAction()
-    {
-        
-        
+    {                
     $mail = new Zend_Mail();
 // information of user login to send message in your  mail 
     $auth =Zend_Auth::getInstance();
@@ -258,8 +252,11 @@ class UsersController extends Zend_Controller_Action
 
     $Emailuse=$auth->getIdentity()->useremail;
 
+     $auth =Zend_Auth::getInstance();
+
+    $idd=$auth->getIdentity()->user_id;
     // body of email 
-    $mail->setBodyText('hi'.$name."<br>".'Welcome in Forums  your Email '.$Emailuse.'to change  your password http://localhost/Zend/Zend/ZendSFS/public/users/ ');
+    $mail->setBodyText('hi'.$name."<br>".'Welcome in Forums  your Email '.$Emailuse.'to change  your password http://localhost/Zend/Zend/ZendSFS/public/users/change-password/id/'.$idd);
 
     $mail->setFrom('forum@sfs.com', 'Forum');
 
@@ -270,7 +267,7 @@ class UsersController extends Zend_Controller_Action
     $mail->send();
 
     }
-
+//----------------------- logout  -------------------------------------------
     public function logoutAction()
     {
         // action body
@@ -278,14 +275,56 @@ class UsersController extends Zend_Controller_Action
 
         $authAdapter->clearIdentity();
 
-        $this->redirect("/user/login");  
+        $this->redirect("/users/login");  
     }
-
+////--------------------------- change password  of  user  --------------------- 
     public function changePasswordAction()
     {
         // action body
-    }
 
+        $change= new Application_Form_ChangePassword();
+
+        $this->view->change=$change;
+
+        $id=$this->getRequest()->getParam('id');
+
+         $user = $this->model->getUserById($id);
+
+        $old=$user[0]['password'];
+
+           if($this->getRequest()->isPost()){ 
+
+            $data = $this->getRequest()->getParams();
+
+             if($change->isValid($data)){  
+
+                $oldPass=$this->getRequest()->getParam('oldpassword');
+
+                $newPass=$this->getRequest()->getParam('password');
+
+                $confPass=$this->getRequest()->getParam('confpassword');
+
+                if(($old===md5($oldPass)) &&($newPass===$confPass) ){
+                    echo " Done change password ";
+
+                    if($this->model->changepassword($id, $data)){
+
+                        $this->redirect('users/list');
+
+                     }
+                }
+                else{
+
+                    echo "<div> <h2>old password  error </h2></div >  ";
+               
+                }
+
+            }
+
+        }
+
+    }
+///--------------------------------------- eedit  profile -------------------------- 
     public function editProfilAction()
     {
         // action body

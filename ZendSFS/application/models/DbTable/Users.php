@@ -118,7 +118,6 @@ function removeban($id){
 			unset($data['module']);
 		if(isset($data['MAX_FILE_SIZE']))
 			unset($data['MAX_FILE_SIZE']);
-
 		if(isset($data['controller']))
 			unset($data['controller']);
 		if(isset($data['action']))
@@ -129,6 +128,34 @@ function removeban($id){
 			unset($data['id']);
 		$data['password']=md5($data['password']);
 		//$data['picture']=$data['picture'];
+		if(isset($data['userId']))
+			unset($data['userId']);
+
+		return $this->update($data,'user_id='.$id);
+
+	}
+
+
+	function changepassword($id,$data){
+
+		if(isset($data['module']))
+			unset($data['module']);
+		if(isset($data['controller']))
+			unset($data['controller']);
+		if(isset($data['action']))
+			unset($data['action']);
+		if(isset($data['SavePassword']))
+			unset($data['SavePassword']);
+
+		if(isset($data['oldpassword']))
+			unset($data['oldpassword']);
+
+		if(isset($data['confpassword']))
+			unset($data['confpassword']);
+
+		if(isset($data['id']))
+			unset($data['id']);
+		$data['password']=md5($data['password']);
 		if(isset($data['userId']))
 			unset($data['userId']);
 

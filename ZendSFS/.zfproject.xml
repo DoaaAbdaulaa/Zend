@@ -23,6 +23,7 @@
       <formsDirectory>
         <formFile formName="Adduser"/>
         <formFile formName="Editprofile"/>
+        <formFile formName="ChangePassword"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
