@@ -65,28 +65,28 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
 
 }
 #################33Remove Admininstration and return it to regular  User#####################
-function removeadminUser($id){
-   $data = array(
-    'admin' => 0);
-   $where = "user_id = " . $id;
-
-		
-	
-  return  $this->update($data, $where );
-
-}
+	function removeadminUser($id){
+   		$data = array(
+    	'admin' => 0);
+   		$where = "user_id = " . $id;
+  		return  $this->update($data, $where );
+	}
 ########################################Ban Users#######################################
-function banUser($id){
-   $data = array(
-    'ban' => 1);
-   $where = "user_id = " . $id;
+	function banUser($id){
+   		$data = array(
+    	'ban' => 1);
+   		$where = "user_id = " . $id;
+  		return  $this->update($data, $where );
 
-		
-	
-  return  $this->update($data, $where );
+	}
+
+function getUserByEmail($email)
+	{
+		//return $this->find($id)->toArray();
+		$select = $this->select()->where("useremail='".$email."'");
+		return $this->fetchAll($select);
+	}
+
 
 }
-}
 	
-
-

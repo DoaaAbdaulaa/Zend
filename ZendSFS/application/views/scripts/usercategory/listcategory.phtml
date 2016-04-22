@@ -1,0 +1,70 @@
+<br /><br />
+<h1>LIST Category</h1>
+<br /><br />
+<?php
+	$auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();
+    if($user->admin == 1)
+    {	
+?>
+<a href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/addcategory/user_id/'.$user->user_id;  ?>"><button>Add category</button></a>
+<?php
+	}
+?>
+	<br /><br />
+
+
+<?php
+	if($this->category)
+	{
+		for($i=0;$i<count($this->category);$i++)
+		{
+?>			 
+			<div class="panel panel-primary">
+      			<div class="panel-heading"><?php echo $this->category[$i]['cat_title']; 
+      			$auth = Zend_Auth::getInstance(); 
+      			$user = $auth->getIdentity();
+      			if($user->admin == 1)
+      			{	
+      			?>
+      				<a href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/deletecategory/cat_id/'.$this->category[$i]['cat_id'];  ?>"><button class="btn btn-default pull-right" style="margin: 3px 3px;">Delete category</button></a>
+      				<a href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/editcategory/cat_id/'.$this->category[$i]['cat_id'];  ?>"><button  class="btn btn-default pull-right" style="margin: 3px 3px;">Edit category</button></a>
+      				<a href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/sub-category/addfourm/cat_id/'.$this->category[$i]['cat_id'];  ?>"><button class="btn btn-default pull-right" style="margin: 3px 3px;" >Add Forum</button></a>
+      			<?php
+      			}
+      			?>	
+      				<div class="clearfix"></div>
+      			</div>
+     			<div class="panel-body">
+     				<?php
+     					$model_sub_category = new Application_Model_DbTable_SubCategory();
+     					$sub_category = $model_sub_category->list_sub_category($this->category[$i]['cat_id']);
+     					if($sub_category)
+     					{
+     						for($j=0;$j<count($sub_category);$j++)
+     						{	
+
+     				?>
+     							<div class="panel panel-info">
+      								<div class="panel-heading"><?php
+      									echo $sub_category[$j]['sub_cat_title'];
+      								?></div>
+     		 						<div class="panel-body">Panel Content</div>
+    							</div>
+
+    				<?php	
+    						}
+    					}		
+    				?>
+     			</div>
+    		</div>
+
+
+<?php
+
+		}	
+
+	}	
+
+
+
+?>	 

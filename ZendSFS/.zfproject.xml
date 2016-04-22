@@ -13,15 +13,40 @@
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="Users">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="login"/>
+        </controllerFile>
+        <controllerFile controllerName="Category">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="UserCategory">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Usercategory">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="listCategory"/>
+          <actionMethod actionName="listcategory"/>
+          <actionMethod actionName="addcategory"/>
+          <actionMethod actionName="deletecategory"/>
+          <actionMethod actionName="editcategory"/>
+          <actionMethod actionName="categorydetails"/>
+        </controllerFile>
+        <controllerFile controllerName="SubCategory">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="addfourm"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Adduser"/>
+        <formFile formName="LoginUser"/>
+        <formFile formName="Category"/>
+        <formFile formName="Subcategory"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
         <dbTableDirectory>
           <dbTableFile dbTableName="Users"/>
+          <dbTableFile dbTableName="LoginUser"/>
+          <dbTableFile dbTableName="Usercategory"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
@@ -36,6 +61,42 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Users">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="login"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Category">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="UserCategory">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="listCategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="listcategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="addcategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="deletecategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="editcategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Usercategory">
+            <viewScriptFile forActionName="categorydetails"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="addfourm"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
