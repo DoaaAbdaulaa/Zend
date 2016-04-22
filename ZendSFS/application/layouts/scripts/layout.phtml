@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap.min.css">
+	
 	
 <?php echo $this->headMeta(); ?>
 <?php echo $this->headTitle() ?>
@@ -12,10 +12,71 @@
 <body>
 	<div class="container">
 		<div class="row">
+		<div class="col-sm-12">
+			<br>
+			<nav  class="navbar navbar-default ">
+				<div class="container-fluid ">
+					<div class="navbar-header">
+						<button class="navbar-toggle" data-toggle="collapse" data-target="#my-navbar">
+							<span class="glyphicon glyphicon-align-justify"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="my-navbar">
+						<ul class="nav navbar-nav">
+							<?php  $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();
+							$userdata=new Zend_Session_Namespace( 'userdata' );
+							if(!isset($user->user_id))
+							{	
+									
+							 ?>
+							<li class="ts  "><a href="<?php echo $this->baseUrl().'/Zend/ZendSFS/public/Users/login';  ?>">Login <span class="glyphicon glyphicon-log-in"></span> </a></li>
+							<?php
+							}
+							if(isset($user->user_id))
+							{	
+							?>
 
-<?php echo $this->layout()->content; ?>
+							<li class="ts" ><a  href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/listcategory/user_id/'.$user->user_id;  ?>"> <span class="glyphicon glyphicon-home"></span>Home</a></li>
+							<?php
+							}
+							else
+							{
+							?>
+							<li class="ts active" ><a  href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/'  ?>"> <span class="glyphicon glyphicon-home"></span>Home</a></li>
+
+							<?php
+							}	
+							if(isset($user->user_id) && $user->admin == 1)
+							{	
+									
+							 ?>
+
+							<li class="ts" ><a  href="<?php $auth = Zend_Auth::getInstance();  $user = $auth->getIdentity();  echo $this->baseUrl().'/Zend/ZendSFS/public/Usercategory/addcategory/user_id/'.$user->user_id;  ?>"><span class="glyphicon glyphicon-plus-sign"></span>Add Category</a></li>
+							<?php
+							}
+							?>
+
+							<!--<li class="ts" ><a  href="#">Register</a></li>
+							<li class="ts" ><a  href="#">Register</a></li>-->
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+
+							<li class="ts" ><a href="<?php echo $this->baseUrl().'/Zend/ZendSFS/public/Users/logout';  ?>">Log Out <span class="glyphicon glyphicon-log-out"></span></a></li>
+
+							<!--<li class="ts" > <a href="#">Log Out<span class="glyphicon glyphicon-log-out"></span>
+					        </a></li>-->
+						</ul>
+					</div>
+
+				</div>
+			</nav>
 
 		</div>
+	</div>	
+<?php echo $this->layout()->content; ?>
+
+		
 	</div>
 	<script src=" <?php echo $this->baseUrl(); ?>/js/jquery-1.11.2.js"></script>
 	<script src=" <?php echo $this->baseUrl(); ?>/js/bootstrap.min.js"></script>

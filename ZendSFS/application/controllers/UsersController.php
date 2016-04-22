@@ -162,8 +162,22 @@ class UsersController extends Zend_Controller_Action
        $this->view->form = $form; 
     }
 
+    public function logoutAction()
+    {
+          // action body
+        $authAdapter=Zend_Auth::getInstance();
+
+        $authAdapter->clearIdentity();
+        
+        Zend_Session::destroy( true );    
+
+        $this->redirect("/users/login");
+    }
+
 
 }
+
+
 
 
 

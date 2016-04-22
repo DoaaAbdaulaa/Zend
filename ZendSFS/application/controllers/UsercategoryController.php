@@ -5,17 +5,25 @@ class UsercategoryController extends Zend_Controller_Action
 
     private $model;
     private $model_sub_category;
+    private $model_thread;
 
     public function init()
     {
         /* Initialize action controller here */
         $this->model = new Application_Model_DbTable_Usercategory();
         $this->model_sub_category = new Application_Model_DbTable_SubCategory();
+        $this->model_thread = new Application_Model_DbTable_Thread();
     }
 
     public function indexAction()
     {
-        // action body
+        $category=$this->model->listCategory();
+        $sub_category = $this->model_sub_category->list_all_sub_category();
+        $thread = $this->model_thread->list_all_thread();
+        //var_dump($category);
+        $this->view->category = $category;
+        $this->view->sub_category = $sub_category;
+        $this->view->thread = $thread;
     }
 
     public function listcategoryAction()
@@ -27,12 +35,16 @@ class UsercategoryController extends Zend_Controller_Action
         if ($user->user_id == $data)
         {
         	$category=$this->model->listCategory();
+            $sub_category = $this->model_sub_category->list_all_sub_category();
+            $thread = $this->model_thread->list_all_thread();
             //var_dump($category);
             $this->view->category = $category;
+            $this->view->sub_category = $sub_category;
+            $this->view->thread = $thread;
         }
         else
         {
-            $this->redirect('/Users/login');
+            $this->redirect('/Users/logout');
 
         }	
 
@@ -69,7 +81,7 @@ class UsercategoryController extends Zend_Controller_Action
         }
         else
         {
-        	$this->redirect('/users/login');
+        	$this->redirect('/users/logout');
         }	
 
     }
@@ -97,13 +109,13 @@ class UsercategoryController extends Zend_Controller_Action
         	}
         	else
         	{
-            	$this->redirect('/users/login');
+            	$this->redirect('/users/logout');
         	}	
 
         }	
         else
         {
-            $this->redirect('/users/login');
+            $this->redirect('/users/logout');
 
         }
 
@@ -139,13 +151,13 @@ class UsercategoryController extends Zend_Controller_Action
         	}	
         	else
         	{
-            	$this->redirect('/users/login');
+            	$this->redirect('/users/logout');
         	}
 
         }
         else
         {
-            $this->redirect('/users/login');
+            $this->redirect('/users/logout');
 
         }	
 

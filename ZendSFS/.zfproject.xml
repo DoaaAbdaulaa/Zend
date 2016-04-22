@@ -14,6 +14,7 @@
         <controllerFile controllerName="Users">
           <actionMethod actionName="index"/>
           <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
         </controllerFile>
         <controllerFile controllerName="Category">
           <actionMethod actionName="index"/>
@@ -33,6 +34,19 @@
         <controllerFile controllerName="SubCategory">
           <actionMethod actionName="index"/>
           <actionMethod actionName="addfourm"/>
+          <actionMethod actionName="deletesubcategory"/>
+          <actionMethod actionName="editsubcategory"/>
+          <actionMethod actionName="banthread"/>
+          <actionMethod actionName="releasebanthread"/>
+        </controllerFile>
+        <controllerFile controllerName="Thread">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="addthread"/>
+          <actionMethod actionName="threaddetails"/>
+          <actionMethod actionName="deletethread"/>
+          <actionMethod actionName="editthread"/>
+          <actionMethod actionName="stickythread"/>
+          <actionMethod actionName="releasestickythread"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -40,6 +54,7 @@
         <formFile formName="LoginUser"/>
         <formFile formName="Category"/>
         <formFile formName="Subcategory"/>
+        <formFile formName="Thread"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -97,6 +112,42 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="SubCategory">
             <viewScriptFile forActionName="addfourm"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="deletesubcategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="editsubcategory"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="banthread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SubCategory">
+            <viewScriptFile forActionName="releasebanthread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="addthread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="threaddetails"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="deletethread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="editthread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="stickythread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="releasestickythread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="logout"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
