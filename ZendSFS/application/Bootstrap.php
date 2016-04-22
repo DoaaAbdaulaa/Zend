@@ -18,6 +18,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// Set the initial title and separator:
 		$view->headTitle('SFS')->setSeparator(' :: ');
 		// Set the initial stylesheet:
+<<<<<<< HEAD
 		$view->headScript()->prependFile($view->baseUrl().'/Zend/ZendSFS/public/js/bootstrap.min.js');
 		$view->headScript()->prependFile($view->baseUrl().'/Zend/ZendSFS/public/js/jquery-1.11.2.js');
 		// Set the initial JS to load:
@@ -27,5 +28,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	}
 
+=======
+		//$view->headLink()->prependStylesheet('/css/site.css');
+		// Set the initial JS to load:
+		//$view->headScript()->prependFile('/js/code.js');
+
+	}
+
+	//To activate session
+	protected function _initSession(){
+		Zend_Session::start();
+	}
+
+
+
+
+>>>>>>> 29bbea56dfd713027a05ef1a0f7da92d37b9a7bc
 }
 

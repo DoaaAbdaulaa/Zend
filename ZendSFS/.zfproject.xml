@@ -14,6 +14,7 @@
         <controllerFile controllerName="Users">
           <actionMethod actionName="index"/>
           <actionMethod actionName="login"/>
+<<<<<<< HEAD
           <actionMethod actionName="logout"/>
         </controllerFile>
         <controllerFile controllerName="Category">
@@ -47,14 +48,25 @@
           <actionMethod actionName="editthread"/>
           <actionMethod actionName="stickythread"/>
           <actionMethod actionName="releasestickythread"/>
+=======
+          <actionMethod actionName="sendMail"/>
+          <actionMethod actionName="logout"/>
+          <actionMethod actionName="changePassword"/>
+          <actionMethod actionName="editProfil"/>
+>>>>>>> 29bbea56dfd713027a05ef1a0f7da92d37b9a7bc
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Adduser"/>
+<<<<<<< HEAD
         <formFile formName="LoginUser"/>
         <formFile formName="Category"/>
         <formFile formName="Subcategory"/>
         <formFile formName="Thread"/>
+=======
+        <formFile formName="Editprofile"/>
+        <formFile formName="ChangePassword"/>
+>>>>>>> 29bbea56dfd713027a05ef1a0f7da92d37b9a7bc
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -80,6 +92,7 @@
           <viewControllerScriptsDirectory forControllerName="Users">
             <viewScriptFile forActionName="login"/>
           </viewControllerScriptsDirectory>
+<<<<<<< HEAD
           <viewControllerScriptsDirectory forControllerName="Category">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
@@ -148,6 +161,19 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Users">
             <viewScriptFile forActionName="logout"/>
+=======
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="sendMail"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="changePassword"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="editProfil"/>
+>>>>>>> 29bbea56dfd713027a05ef1a0f7da92d37b9a7bc
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
