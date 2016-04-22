@@ -16,10 +16,13 @@
           <actionMethod actionName="login"/>
           <actionMethod actionName="sendMail"/>
           <actionMethod actionName="logout"/>
+          <actionMethod actionName="changePassword"/>
+          <actionMethod actionName="editProfil"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Adduser"/>
+        <formFile formName="Editprofile"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -48,6 +51,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Users">
             <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="changePassword"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="editProfil"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

@@ -33,6 +33,8 @@ class Application_Model_DbTable_Users extends Zend_Db_Table_Abstract
 	function getUserById($id){
 		return $this->find($id)->toArray();
 	}
+
+	//-------------------------------------------- 
 	function editUser($id,$data){
      if (isset($data['module']))  
 		unset( $data['module']) ;
@@ -105,14 +107,36 @@ function removeban($id){
 		$row->ban=0;
 		$row->admin=0;
 		$row->systemclosed=0;
-		//$row->save();
-		//$mailer=new Mailer();
-		//$mailer->sendRegistrationMail($useremail,$username);
-		//return $user_id 
-
-
 		return $row->save();
 	}
+
+
+	function edituserProfile($id,$data){
+
+		//$row = $this->createRow();
+		if(isset($data['module']))
+			unset($data['module']);
+		if(isset($data['MAX_FILE_SIZE']))
+			unset($data['MAX_FILE_SIZE']);
+
+		if(isset($data['controller']))
+			unset($data['controller']);
+		if(isset($data['action']))
+			unset($data['action']);
+		if(isset($data['save']))
+			unset($data['save']);
+		if(isset($data['id']))
+			unset($data['id']);
+		$data['password']=md5($data['password']);
+		//$data['picture']=$data['picture'];
+		if(isset($data['userId']))
+			unset($data['userId']);
+
+		return $this->update($data,'user_id='.$id);
+
+	}
+
+
 
 }
 	

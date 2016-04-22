@@ -247,6 +247,7 @@ class UsersController extends Zend_Controller_Action
     public function sendMailAction()
     {
         
+        
     $mail = new Zend_Mail();
 // information of user login to send message in your  mail 
     $auth =Zend_Auth::getInstance();
@@ -256,7 +257,6 @@ class UsersController extends Zend_Controller_Action
     $name=$auth->getIdentity()->username;
 
     $Emailuse=$auth->getIdentity()->useremail;
-
 
     // body of email 
     $mail->setBodyText('hi'.$name."<br>".'Welcome in Forums  your Email '.$Emailuse.'to change  your password http://localhost/Zend/Zend/ZendSFS/public/users/ ');
@@ -281,12 +281,49 @@ class UsersController extends Zend_Controller_Action
         $this->redirect("/user/login");  
     }
 
+    public function changePasswordAction()
+    {
+        // action body
+    }
+
+    public function editProfilAction()
+    {
+        // action body
+        $editinfo=new Application_Form_Editprofile();
+
+        $this->view->editinfo=$editinfo;
+
+        $id=$this->getRequest()->getParam('id');
+
+        $user = $this->model->getUserById($id);
+
+        $editinfo->populate($user[0]);
+
+        if($this->getRequest()->isPost())
+        {   
+            $data = $this->getRequest()->getParams();
+            if($editinfo->isValid($data))
+            {    
+
+             $pic1=pathinfo($editinfo->picture->getFileName());
+             // photo name 
+             $A=$pic1['basename'];
+
+                 if ($editinfo->picture->receive()) {
+
+                    $data['picture']=$pic1['basename'];
+
+                if($this->model->edituserProfile($id, $data))
+                {
+                    $this->redirect('users/list');
+                }
+
+            }
+
+            }    
+        
+        }
+
+    }
 
 }
-
-
-
-
-
-
-
